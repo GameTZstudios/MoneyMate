@@ -1,0 +1,126 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 70px; /* Add padding to accommodate the navbar height */
+}
+
+/* Header */
+.task-header h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #f5f5f5;
+    margin: 10px 0;
+}
+
+/* Task Sections */
+.video-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.video-info {
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+.video-info h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #f5f5f5;
+}
+
+.video-info p {
+    font-size: 0.9rem;
+    color: #ffa500;
+}
+
+/* Image Container */
+.image-container img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+/* Buttons */
+.watch-video, .follow-task, .join-task {
+    background: #ffa500;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #121212;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.watch-video:hover, .follow-task:hover, .join-task:hover {
+    background: #e6b800;
+}
+
+/* Completed Task Tick */
+.task-completed {
+    font-size: 1.5rem;
+    color: green;
+    display: none;
+    margin-left: 15px;
+}
+
+.task-completed.visible {
+    display: block;
+}
+
+/* Footer Navigation */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li {
+    text-align: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.navbar a:hover {
+    color: #f0a500;
+}
+
+.navbar img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+}

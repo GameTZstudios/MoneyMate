@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Coin Game</title>
+  <link rel="stylesheet" href="Mine.css">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="count">🔑 Keys: <span id="key-count">0</span></div>
+    <div class="count">⚡ Energy: <span id="energy-count">500</span></div>
+    <div class="count">💎 Diamonds: <span id="diamond-count">0</span></div>
+  </div>
+
+  <div class="main">
+    <div class="coin-container">
+      <div class="coin" id="coin">
+        <img src="coin_level1.png" alt="Coin" />
+      </div>
+      <div class="tap-animation" id="tap-animation">+10</div>
+    </div>
+
+    <div class="level-bar-container">
+      <div class="level-bar">
+        <div id="level-progress" class="progress"></div>
+      </div>
+      <div class="level-name" id="level-name">Level: Newbie</div>
+      <div class="total-amount">
+        <img src="COIN1.png" alt="Coin" class="coin-icon" />
+        Total Amount: <span id="total-amount">0</span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <ul>
+      <li>
+        <a href="Mine.html">
+          <img src="pickaxe.png" alt="" />
+          <span>Mine</span>
+        </a>
+      </li>
+      <li>
+        <a href="Tasks.html">
+          <img src="tasks.jpg" alt="" />
+          <span>Tasks</span>
+        </a>
+      </li>
+      <li>
+        <a href="Friends.html">
+          <img src="friends.png" alt="" />
+          <span>Friends</span>
+        </a>
+      </li>
+      <li>
+        <a href="Airdrops.html">
+          <img src="coin.png" alt="" />
+          <span>Airdrop</span>
+        </a>
+      </li>
+      <li>
+        <a href="Tournaments.html">
+          <img src="console.png" alt="" />
+          <span>Tournaments</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  
+
+  <script src="Mine.js"></script>
+</body>
+</html>
