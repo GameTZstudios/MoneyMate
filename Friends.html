@@ -17,19 +17,6 @@
             color: #ffffff;
         }
 
-        /* Friends Section */
-        .friends-container {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .friends-image {
-            max-width: 80%;
-            height: auto;
-            margin: 20px auto;
-            display: block;
-        }
-
         /* Referral Section */
         .referral-page {
             text-align: center;
@@ -65,161 +52,151 @@
             margin-right: 15px;
         }
 
-        .referral-info h2 {
-            font-size: 18px;
-            margin: 0;
+        .referral-link-container {
+            margin-top: 20px;
         }
 
-        .referral-info p {
+        .referral-link-container input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px 0 0 5px;
+            border: none;
+            outline: none;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .referral-link-container button {
+            padding: 10px;
+            border-radius: 0 5px 5px 0;
+            border: none;
+            background-color: #ffcc00;
+            color: #000;
+            cursor: pointer;
             font-size: 14px;
-            color: #ccc;
-            margin: 5px 0 0;
         }
 
-        .more-bonuses {
-            color: #00ccff; /* Link color */
-            text-decoration: none;
-            font-size: 14px;
-            margin-top: 15px;
-            display: inline-block;
-        }
-
-        .more-bonuses:hover {
-            text-decoration: underline;
+        .referral-link-container button:hover {
+            background-color: #e5b800;
         }
 
         /* Navigation Bar */
-        .bottom-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #000000;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 0;
-}
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #000000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
 
-.navbar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #000000;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px 0;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-}
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
 
-.navbar ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
+        .navbar li {
+            text-align: center;
+        }
 
-.navbar li {
-  text-align: center;
-}
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: color 0.2s;
+        }
 
-.navbar a {
-  text-decoration: none;
-  color: white;
-  font-size: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: color 0.2s;
-}
+        .navbar a:hover {
+            color: #f0a500;
+        }
 
-.navbar a:hover {
-  color: #f0a500;
-}
+        .navbar img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+        }
 
-.navbar img {
-  width: 24px;
-  height: 24px;
-  margin-bottom: 5px;
-}
-
+        #copy-status {
+            color: green;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <!-- Friends Section -->
-    <div class="friends-container">
-        
-        <!-- Referral Section -->
-        <div class="referral-page">
-            <h1>Invite Friends!</h1>
-            <p class="subtitle">You and your friend will receive bonuses</p>
+    <!-- Referral Section -->
+    <div class="referral-page">
+        <h1>Invite Friends!</h1>
+        <p class="subtitle">You and your friend will receive bonuses</p>
 
-            <!-- Referral Option 1 -->
-            <div class="referral-box">
-                <img src="gift.png" alt="Gift" class="gift-icon">
-                <div class="referral-info">
-                    <h2>Invite a friend</h2>
-                    <p>+100 MMCs for you and your friend</p>
-                </div>
-            </div>
-
-            <!-- Referral Option 2 -->
-            <div class="referral-box">
-                <img src="Gift.png" alt="Gift" class="gift-icon">
-                <div class="referral-info">
-                    <h2>Invite a friend with Telegram Premium</h2>
-                    <p>+150 MMCs for you and your friend</p>
-                </div>
-            </div>
-
-            <!-- More Bonuses -->
-            <a href="#" class="more-bonuses">More bonuses</a>
+        <div class="referral-link-container">
+            <input type="text" id="referral-link" readonly value="https://t.me/YourBotUsername?start=USER_ID">
+            <button onclick="copyReferralLink()">Copy</button>
         </div>
+        <p id="copy-status">Referral link copied successfully!</p>
     </div>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
         <ul>
-          <li>
-            <a href="Mine.html">
-              <img src="pickaxe.png" alt="" />
-              <span>Mine</span>
-            </a>
-          </li>
-          <li>
-            <a href="Tasks.html">
-              <img src="tasks.jpg" alt="" />
-              <span>Tasks</span>
-            </a>
-          </li>
-          <li>
-            <a href="Friends.html">
-              <img src="friends.png" alt="" />
-              <span>Friends</span>
-            </a>
-          </li>
-          <li>
-            <a href="Airdrops.html">
-              <img src="coin.png" alt="" />
-              <span>Airdrop</span>
-            </a>
-          </li>
-          <li>
-            <a href="Tournaments.html">
-              <img src="console.png" alt="" />
-              <span>Tournaments</span>
-            </a>
-          </li>
+            <li>
+                <a href="index.html">
+                    <img src="pickaxe.png" alt="">
+                    <span>Mine</span>
+                </a>
+            </li>
+            <li>
+                <a href="Tasks.html">
+                    <img src="tasks.jpg" alt="">
+                    <span>Tasks</span>
+                </a>
+            </li>
+            <li>
+                <a href="Friends.html">
+                    <img src="friends.png" alt="">
+                    <span>Friends</span>
+                </a>
+            </li>
+            <li>
+                <a href="Airdrops.html">
+                    <img src="coin.png" alt="">
+                    <span>Airdrop</span>
+                </a>
+            </li>
+            <li>
+                <a href="Tournaments.html">
+                    <img src="console.png" alt="">
+                    <span>Tournaments</span>
+                </a>
+            </li>
         </ul>
-      </nav>
+    </nav>
 
-    <!-- JavaScript for Referral -->
     <script>
-        function sendReferral() {
-            const referralLink = `https://t.me/YourBotUsername?start=referral_${Math.random().toString(36).substr(2, 9)}`;
-            alert(`Copy this link to invite your friends:\n\n${referralLink}`);
+        function copyReferralLink() {
+            const referralInput = document.getElementById("referral-link");
+            referralInput.select();
+            referralInput.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand("copy");
+
+            const status = document.getElementById("copy-status");
+            status.style.display = "block";
+
+            setTimeout(() => {
+                status.style.display = "none";
+            }, 2000);
         }
     </script>
 </body>
