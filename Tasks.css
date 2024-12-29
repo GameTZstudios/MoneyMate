@@ -60,10 +60,28 @@ body {
     color: #121212;
     font-size: 1rem;
     cursor: pointer;
+    transition: background 0.3s, transform 0.3s; /* Smooth transition */
 }
 
 .watch-video:hover, .follow-task:hover, .join-task:hover {
     background: #e6b800;
+}
+
+/* Claim Button Styles */
+.claim-video {
+    background: #FF9800; /* Orange background for Claim button */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #121212;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.claim-video:hover {
+    background: #e68a00; /* Darker orange on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
 }
 
 /* Completed Task Tick */
