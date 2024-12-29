@@ -1,73 +1,48 @@
-const rewardCooldown = 10 * 60 * 1000; // 10 minutes in milliseconds
-const rewardAmount = 1000; // Example reward amount
+// Global coin count initialization
+let coinCount = 0;
 
-const getTasksState = () => JSON.parse(localStorage.getItem('tasksState')) || {};
-const saveTasksState = (state) => localStorage.setItem('tasksState', JSON.stringify(state));
+// Function to handle YouTube video tasks
+function startTask(button, url, taskId) {
+    // Check if the task is a YouTube video
+    if (button.classList.contains("watch-video")) {
+        // Open the YouTube video in a new tab
+        window.open(url, "_blank");
 
-const updateTotalCoins = (amount) => {
-    const totalCoins = parseInt(localStorage.getItem('totalCoins')) || 0;
-    localStorage.setItem('totalCoins', totalCoins + amount);
-};
+        // Simulate a 5-second delay for task completion
+        setTimeout(() => {
+            // Mark task as completed
+            markTaskAsCompleted(button);
 
-function startTask(button) {
-    const taskId = button.dataset.taskId;
-    const url = button.dataset.link;
-    const tasksState = getTasksState();
-    const currentTime = new Date().getTime();
-
-    // Check if task is being started
-    if (!tasksState[taskId]) {
-        // Open the task link
-        window.open(url, '_blank');
-
-        // Update button to "Claim"
-        button.innerText = 'Claim';
-        button.onclick = () => claimReward(button);
-
-        // Save task state
-        tasksState[taskId] = { startedAt: currentTime };
-        saveTasksState(tasksState);
-    }
-}
-
-function claimReward(button) {
-    const taskId = button.dataset.taskId;
-    const tasksState = getTasksState();
-    const currentTime = new Date().getTime();
-    const task = tasksState[taskId];
-
-    // Check if 10 minutes have passed
-    if (currentTime - task.startedAt < rewardCooldown) {
-        alert("You didn't watch the video. Please wait for 10 minutes before claiming.");
+            // Update coins for YouTube tasks only
+            updateCoins(1000);
+        }, 5000); // Adjust time as needed
     } else {
-        // Grant reward
-        updateTotalCoins(rewardAmount);
-        alert(`Task completed! You earned ${rewardAmount} coins.`);
+        // For other tasks (Follow X Accounts or Join Telegram Channels)
+        window.open(url, "_blank");
 
-        // Mark task as completed
-        button.disabled = true;
-        button.innerText = 'Completed ✔️';
+        // Mark task as completed (optional visual indicator, no coin update)
+        markTaskAsCompleted(button);
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const tasksState = getTasksState();
-    const currentTime = new Date().getTime();
+// Function to mark a task as completed
+function markTaskAsCompleted(button) {
+    const checkmark = button.nextElementSibling; // Checkmark element
+    button.disabled = true; // Disable the button
+    button.innerText = "Completed"; // Update button text
+    checkmark.style.display = "inline"; // Show the checkmark
+}
 
-    document.querySelectorAll('.task-button').forEach((button) => {
-        const taskId = button.dataset.taskId;
-        const task = tasksState[taskId];
+// Function to update the coin count
+function updateCoins(amount) {
+    // Increment the global coin count
+    coinCount += amount;
 
-        if (task) {
-            if (currentTime - task.startedAt < rewardCooldown) {
-                // Task is in progress
-                button.innerText = 'Claim';
-                button.onclick = () => claimReward(button);
-            } else {
-                // Task completed
-                button.disabled = true;
-                button.innerText = 'Completed ✔️';
-            }
-        }
-    });
-});
+    // Update the displayed coin count (Assuming there's a coin count element)
+    const coinCountElement = document.getElementById("coin-count");
+    if (coinCountElement) {
+        coinCountElement.textContent = coinCount;
+    } else {
+        console.warn("Coin count element not found!");
+    }
+}
