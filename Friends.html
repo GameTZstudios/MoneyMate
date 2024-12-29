@@ -171,25 +171,36 @@
         </ul>
     </nav>
 
-    <script>
-        // Assuming you have the user's ID stored in local storage
-        const userId = localStorage.getItem('userId'); // Replace with actual method to get user ID
-        const referralLink = `https://t.me/YourBotUsername?start=${userId}`;
-        document.getElementById("referral-link").value = referralLink;
+  <script>
+    const userId = localStorage.getItem('userId'); // Get user ID from local storage
 
-        function copyReferralLink() {
-            const referralInput = document.getElementById("referral-link");
-            referralInput.select();
-            referralInput.setSelectionRange(0, 99999); // For mobile devices
-            document.execCommand("copy");
+    function copyReferralLink() {
+        const referralInput = document.getElementById("referral-link");
+        referralInput.select();
+        referralInput.setSelectionRange(0, 99999); // For mobile devices
+        document.execCommand("copy");
 
-            const status = document.getElementById("copy-status");
-            status.style.display = "block";
+        // Send the user ID to the backend
+        fetch('/referral', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user_id: userId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message); // Handle the response
+        })
+        .catch(error => console.error('Error:', error));
 
-            setTimeout(() => {
-                status.style.display = "none";
-            }, 2000);
-        }
-    </script>
+        const status = document.getElementById("copy-status");
+        status.style.display = "block";
+
+        setTimeout(() => {
+            status.style.display = "none";
+        }, 2000);
+    }
+</script>
 </body>
 </html>
