@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Friends Referral</title>
-    <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -44,12 +43,6 @@
             margin: 10px auto;
             width: 90%;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .referral-box img {
-            width: 50px;
-            height: 50px;
-            margin-right: 15px;
         }
 
         .referral-link-container {
@@ -121,12 +114,6 @@
             color: #f0a500;
         }
 
-        .navbar img {
-            width: 24px;
-            height: 24px;
-            margin-bottom: 5px;
-        }
-
         #copy-status {
             color: green;
             margin-top: 10px;
@@ -142,7 +129,7 @@
         <p class="subtitle">You and your friend will receive bonuses</p>
 
         <div class="referral-link-container">
-            <input type="text" id="referral-link" readonly value="https://t.me/YourBotUsername?start=USER_ID">
+            <input type="text" id="referral-link" readonly>
             <button onclick="copyReferralLink()">Copy</button>
         </div>
         <p id="copy-status">Referral link copied successfully!</p>
@@ -150,7 +137,7 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <ul>
+        < <ul>
             <li>
                 <a href="index.html">
                     <img src="pickaxe.png" alt="">
@@ -185,6 +172,11 @@
     </nav>
 
     <script>
+        // Assuming you have the user's ID stored in local storage
+        const userId = localStorage.getItem('userId'); // Replace with actual method to get user ID
+        const referralLink = `https://t.me/YourBotUsername?start=${userId}`;
+        document.getElementById("referral-link").value = referralLink;
+
         function copyReferralLink() {
             const referralInput = document.getElementById("referral-link");
             referralInput.select();
