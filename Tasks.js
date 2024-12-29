@@ -1,5 +1,6 @@
 // Global coin count initialization
 let coinCount = 0;
+let taskStartTime = {}; // To track when the task was started
 
 // Function to handle YouTube video tasks
 function startTask(button, url, taskId) {
@@ -8,20 +9,36 @@ function startTask(button, url, taskId) {
         // Open the YouTube video in a new tab
         window.open(url, "_blank");
 
-        // Simulate a 5-second delay for task completion
-        setTimeout(() => {
-            // Mark task as completed
-            markTaskAsCompleted(button);
+        // Record the start time of the task
+        taskStartTime[taskId] = new Date().getTime();
 
-            // Update coins for YouTube tasks only
-            updateCoins(1000);
-        }, 5000); // Adjust time as needed
+        // Change button to Claim after watching
+        button.innerText = "Claim";
+        button.classList.remove("watch-video");
+        button.classList.add("claim-video");
+        button.setAttribute("onclick", `claimTask(this, '${taskId}')`);
+    } else if (button.classList.contains("claim-video")) {
+        claimTask(button, taskId);
+    }
+}
+
+// Function to claim the task
+function claimTask(button, taskId) {
+    const currentTime = new Date().getTime();
+    const elapsedTime = (currentTime - taskStartTime[taskId]) / 1000; // in seconds
+
+    if (elapsedTime < 600) { // Less than 10 minutes
+        alert("You didn't watch the full video. No reward.");
+        button.innerText = "Watch";
+        button.classList.remove("claim-video");
+        button.classList.add("watch-video");
+        button.setAttribute("onclick", `startTask(this, 'https://www.youtube.com/watch?v=${taskId}', '${taskId}')`);
     } else {
-        // For other tasks (Follow X Accounts or Join Telegram Channels)
-        window.open(url, "_blank");
-
-        // Mark task as completed (optional visual indicator, no coin update)
-        markTaskAsCompleted(button);
+        // Reward the user
+        updateCoins(1000);
+        alert("You have been rewarded!");
+        button.innerText = "Completed";
+        button.disabled = true; // Disable the button
     }
 }
 
