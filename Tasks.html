@@ -8,70 +8,129 @@
 </head>
 <body>
     <div class="task-page">
+        <!-- Header Section -->
         <header class="task-header">
-            <h1>Earn more coins</h1>
+            <h1>Earn More Coins</h1>
         </header>
 
+        <!-- YouTube Videos Section -->
         <section class="youtube-videos">
             <h2>Watch YouTube Videos</h2>
+
             <div class="video-item">
                 <div class="image-container">
-                    <img src="youtubelogo.png" alt="YouTube" />
+                    <img src="youtubelogo.png" alt="YouTube Logo" />
                 </div>
                 <div class="video-info">
                     <h3>Watch Video 1</h3>
                     <p><span class="coin-icon">🪙</span> +1,000</p>
                 </div>
                 <button 
-                    class="task-button" 
+                    class="watch-video task-button" 
                     data-task-id="task1" 
-                    data-link="https://www.youtube.com/watch?v=video1" 
-                    onclick="startTask(this)">
+                    onclick="startTask(this, 'https://www.youtube.com/watch?v=video1', 'task1')">
                     Watch
                 </button>
+                <span class="task-completed checkmark">&#10003;</span>
             </div>
-            <!-- Add more video items as needed -->
-        </section>
 
-        <section class="x-accounts">
-            <h2>Follow X Accounts</h2>
             <div class="video-item">
                 <div class="image-container">
-                    <img src="xlogo.png" alt="X" />
+                    <img src="youtubelogo.png" alt="YouTube Logo" />
+                </div>
+                <div class="video-info">
+                    <h3>Watch Video 2</h3>
+                    <p><span class="coin-icon">🪙</span> +1,000</p>
+                </div>
+                <button 
+                    class="watch-video task-button" 
+                    data-task-id="task2" 
+                    onclick="startTask(this, 'https://www.youtube.com/watch?v=video2', 'task2')">
+                    Watch
+                </button>
+                <span class="task-completed checkmark">&#10003;</span>
+            </div>
+        </section>
+
+        <!-- X Accounts Section -->
+        <section class="x-accounts">
+            <h2>Follow X Accounts</h2>
+
+            <div class="video-item">
+                <div class="image-container">
+                    <img src="xlogo.png" alt="X Logo" />
                 </div>
                 <div class="video-info">
                     <h3>Follow X Account</h3>
                     <p><span class="coin-icon">🪙</span> +500</p>
                 </div>
                 <button 
-                    class="task-button" 
-                    data-task-id="task2" 
-                    data-link="https://x.com/account1" 
-                    onclick="startTask(this)">
+                    class="follow-task task-button" 
+                    data-task-id="task3" 
+                    onclick="startTask(this, 'https://x.com/account1', 'task3')">
                     Follow
                 </button>
+                <span class="task-completed checkmark">&#10003;</span>
             </div>
         </section>
 
+        <!-- Telegram Links Section -->
         <section class="telegram-links">
             <h2>Join Telegram Channels</h2>
+
             <div class="video-item">
                 <div class="image-container">
-                    <img src="telegramlogo.png" alt="Telegram" />
+                    <img src="telegramlogo.png" alt="Telegram Logo" />
                 </div>
                 <div class="video-info">
                     <h3>Join Telegram Channel</h3>
                     <p><span class="coin-icon">🪙</span> +1,000</p>
                 </div>
                 <button 
-                    class="task-button" 
-                    data-task-id="task3" 
-                    data-link="https://t.me/channel1" 
-                    onclick="startTask(this)">
+                    class="join-task task-button" 
+                    data-task-id="task4" 
+                    onclick="startTask(this, 'https://t.me/channel1', 'task4')">
                     Join
                 </button>
+                <span class="task-completed checkmark">&#10003;</span>
             </div>
         </section>
+
+        <!-- Footer Navigation -->
+        <nav class="navbar">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="pickaxe.png" alt="Mine Icon" />
+                        <span>Mine</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Tasks.html">
+                        <img src="tasks.jpg" alt="Tasks Icon" />
+                        <span>Tasks</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Friends.html">
+                        <img src="friends.png" alt="Friends Icon" />
+                        <span>Friends</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Airdrops.html">
+                        <img src="coin.png" alt="Airdrop Icon" />
+                        <span>Airdrop</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Tournaments.html">
+                        <img src="console.png" alt="Tournaments Icon" />
+                        <span>Tournaments</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 
     <script src="Tasks.js"></script>
