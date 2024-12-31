@@ -80,22 +80,41 @@
         </div>
     </div>
 
-    <script>
-        // Generate the referral link
-        const botURL = "https://t.me/MoneyMateChannel";
-        const userChatId = "123456789"; // Replace with dynamic user ID logic
-        const referralLink = `${botURL}?start=${userChatId}`;
-        document.getElementById("referralLink").value = referralLink;
+   <script>
+    // Generate the referral link
+    const botURL = "https://t.me/MoneyMateChannel";
+    const userChatId = "123456789"; // Replace with actual dynamic logic to fetch the user ID
+    const referralLink = `${botURL}?start=${encodeURIComponent(userChatId)}`;
+    document.addEventListener("DOMContentLoaded", () => {
+        const referralInput = document.getElementById("referralLink");
+        if (referralInput) {
+            referralInput.value = referralLink;
+        }
+    });
 
-        // Copy referral link to clipboard
-        function copyReferralLink() {
-            const link = document.getElementById("referralLink");
+    // Copy referral link to clipboard
+    function copyReferralLink() {
+        const link = document.getElementById("referralLink");
+        if (link) {
             link.select();
             link.setSelectionRange(0, 99999); // For mobile devices
-            navigator.clipboard.writeText(link.value).then(() => {
-                alert("Referral link copied to clipboard!");
-            });
+            try {
+                navigator.clipboard.writeText(link.value).then(() => {
+                    alert("Referral link copied to clipboard!");
+                }).catch(() => {
+                    // Fallback for older browsers
+                    document.execCommand("copy");
+                    alert("Referral link copied to clipboard!");
+                });
+            } catch (err) {
+                console.error("Failed to copy referral link:", err);
+                alert("Failed to copy referral link. Please copy it manually.");
+            }
+        } else {
+            console.error("Referral link input field not found.");
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
