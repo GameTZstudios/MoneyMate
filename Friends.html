@@ -3,227 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Refer & Earn</title>
+    <title>Referral Page</title>
     <style>
-        /* General Styling */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            background-color: #222;
-            color: #f4e04d;
-        }
-
-        .refer-page {
-            text-align: center;
-            padding: 20px;
-        }
-
-        header.refer-header {
-            background-color: #f4e04d;
-            color: #222;
-            padding: 20px 0;
-            border-bottom: 5px solid #111;
-        }
-
-        .refer-section, .history-section {
-            margin: 20px auto;
-            padding: 20px;
-            background: #333;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-            max-width: 600px;
-        }
-
-        h2, h3 {
-            color: #f4e04d;
-        }
-
-        .referral-code-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 15px 0;
-        }
-
-        #referralCode {
-            background-color: #444;
-            border: 1px solid #f4e04d;
-            padding: 10px;
-            border-radius: 5px;
-            width: 200px;
-            text-align: center;
-            color: #f4e04d;
-        }
-
-        button {
-            margin-left: 10px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #f4e04d;
-            color: #222;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #ffce00;
-        }
-
-        ul#referralHistory {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul#referralHistory li {
-            background: #444;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 5px;
-            color: #f4e04d;
-            text-align: left;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #111;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 10px 0;
-            border-top: 5px solid #f4e04d;
-        }
-
-        .navbar a {
-            text-decoration: none;
-            color: #f4e04d;
-            font-size: 14px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: color 0.3s;
         }
-
-        .navbar a img {
-            width: 25px;
-            height: 25px;
-            margin-bottom: 5px;
+        .container {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            max-width: 90%;
+            width: 500px;
+            text-align: center;
         }
-
-        .navbar a:hover {
-            color: #ffce00;
+        .container h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .info-container {
+            background: #eaf7ff;
+        }
+        .link-container {
+            background: #fff4e6;
+        }
+        .referral-link {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .referral-link input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        .referral-link button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+        }
+        .referral-link button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="refer-page">
-        <!-- Header Section -->
-        <header class="refer-header">
-            <h1>Invite Friends & Earn Coins</h1>
-        </header>
+    <!-- Information Container -->
+    <div class="container info-container">
+        <h2>Refer and Earn</h2>
+        <p>Share your referral link with your friends! When your friend joins using your referral link, you'll be rewarded.</p>
+        <p>The more friends you refer, the more you earn. Start sharing today!</p>
+    </div>
 
-        <!-- Referral Section -->
-        <section class="refer-section">
-            <h2>Your Referral Code</h2>
-            <div class="referral-code-container">
-                <input 
-                    type="text" 
-                    id="referralCode" 
-                    value="YOURCODE123" 
-                    readonly 
-                />
-                <button onclick="copyReferralCode()">Copy</button>
-            </div>
-
-            <h3>Share Your Referral Link</h3>
-            <div class="share-buttons">
-                <button 
-                    onclick="shareReferralLink('https://yourwebsite.com?ref=YOURCODE123', 'WhatsApp')">
-                    Share on WhatsApp
-                </button>
-                <button 
-                    onclick="shareReferralLink('https://yourwebsite.com?ref=YOURCODE123', 'Telegram')">
-                    Share on Telegram
-                </button>
-            </div>
-        </section>
-
-        <!-- Referral History Section -->
-        <section class="history-section">
-            <h2>Your Referrals</h2>
-            <ul id="referralHistory">
-                <!-- Referral records will be dynamically added here -->
-            </ul>
-        </section>
-
-        <!-- Footer Navigation -->
-        <nav class="navbar">
-            <a href="index.html">
-                <img src="pickaxe.png" alt="Mine Icon">
-                <span>Mine</span>
-            </a>
-            <a href="Tasks.html">
-                <img src="tasks.jpg" alt="Tasks Icon">
-                <span>Tasks</span>
-            </a>
-            <a href="Friends.html">
-                <img src="friends.png" alt="Friends Icon">
-                <span>Friends</span>
-            </a>
-            <a href="Airdrops.html">
-                <img src="coin.png" alt="Airdrop Icon">
-                <span>Airdrop</span>
-            </a>
-            <a href="Tournaments.html">
-                <img src="console.png" alt="Tournaments Icon">
-                <span>Tournaments</span>
-            </a>
-        </nav>
+    <!-- Link Generation Container -->
+    <div class="container link-container">
+        <h2>Your Referral Link</h2>
+        <p>Copy the link below and share it with your friends:</p>
+        <div class="referral-link">
+            <input type="text" id="referralLink" readonly>
+            <button onclick="copyReferralLink()">Copy</button>
+        </div>
     </div>
 
     <script>
-        // Mock user data for referral code
-        const referralCode = "YOURCODE123";
+        // Generate the referral link
+        const botURL = "https://t.me/MoneyMateChannel";
+        const userChatId = "123456789"; // Replace with dynamic user ID logic
+        const referralLink = `${botURL}?start=${userChatId}`;
+        document.getElementById("referralLink").value = referralLink;
 
-        // Function to copy referral code to clipboard
-        function copyReferralCode() {
-            const referralInput = document.getElementById("referralCode");
-            referralInput.select();
-            referralInput.setSelectionRange(0, 99999); // For mobile compatibility
-            navigator.clipboard.writeText(referralInput.value);
-            alert("Referral code copied: " + referralInput.value);
-        }
-
-        // Function to share referral link
-        function shareReferralLink(link, platform) {
-            if (platform === "WhatsApp") {
-                window.open(`https://wa.me/?text=Join%20me%20and%20earn%20coins!%20${link}`);
-            } else if (platform === "Telegram") {
-                window.open(`https://t.me/share/url?url=${link}&text=Join%20me%20and%20earn%20coins!`);
-            }
-        }
-
-        // Mock function to dynamically display referral history
-        function loadReferralHistory() {
-            const historyContainer = document.getElementById("referralHistory");
-            const referrals = [
-                { name: "John Doe", reward: "+1,000 Coins" },
-                { name: "Jane Smith", reward: "+1,000 Coins" },
-            ];
-
-            referrals.forEach(ref => {
-                const listItem = document.createElement("li");
-                listItem.textContent = `${ref.name} - ${ref.reward}`;
-                historyContainer.appendChild(listItem);
+        // Copy referral link to clipboard
+        function copyReferralLink() {
+            const link = document.getElementById("referralLink");
+            link.select();
+            link.setSelectionRange(0, 99999); // For mobile devices
+            navigator.clipboard.writeText(link.value).then(() => {
+                alert("Referral link copied to clipboard!");
             });
         }
-
-        // Load referral history on page load
-        document.addEventListener("DOMContentLoaded", loadReferralHistory);
     </script>
 </body>
 </html>
