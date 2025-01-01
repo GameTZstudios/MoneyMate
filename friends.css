@@ -93,6 +93,11 @@ body {
 .copy-button:hover {
     background-color: #04dcf8; /* Gold */
 }
+<div class="container">
+    <h3>Paste Your Friend's Referral Link</h3>
+    <input id="friendReferralLink" class="input-field" type="text" placeholder="Paste referral link here">
+    <button class="button" onclick="checkReferralLink()">Submit</button>
+  </div>
 
 /* Navigation Bar */
 .bottom-nav {
