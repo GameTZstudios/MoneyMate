@@ -2,7 +2,7 @@
 async function fetchChatIdAndGenerateReferral() {
   try {
     // URL of the backend endpoint
-    const apiUrl = "https://your-backend-url.com/api/getChatId"; // Replace with your actual URL
+    const apiUrl = "https://moneymatebot.onrender.com"; // Replace with your actual URL
 
     // Call the backend API to fetch the user's chat ID
     const response = await fetch(apiUrl, { method: "GET" });
@@ -16,7 +16,7 @@ async function fetchChatIdAndGenerateReferral() {
     const chatId = data.chatId;
 
     // Generate the referral link
-    const botURL = "https://t.me/MoneyMateChannel";
+    const botURL = "https://t.me/@ProsperoAIBot";
     const referralLink = `${botURL}?start=${chatId}`;
 
     // Display the referral link
@@ -43,7 +43,7 @@ async function checkReferralLink() {
     const chatId = referralLink.split("?start=")[1];
 
     // URL of the backend endpoint
-    const apiUrl = "https://your-backend-url.com/api/checkReferral"; // Replace with your actual URL
+    const apiUrl = "https://moneymatebot.onrender.com"; // Replace with your actual URL
 
     // Call the backend API to validate the referral link
     const response = await fetch(apiUrl, {
