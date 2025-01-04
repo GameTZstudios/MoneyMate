@@ -1,11 +1,11 @@
 // Function to fetch chat ID from the database and generate a referral link
 async function fetchChatIdAndGenerateReferral() {
   try {
-    // URL of the backend endpoint
-    const apiUrl = "mongodb://mongo:SJxflVdZiSkkUqvRIWHtCcLUpOwXdXaE@mongodb.railway.internal:27017"; // Replace with your actual URL
+    // Replace with the actual URL of your backend API endpoint to fetch chat ID
+    const fetchChatIdUrl = process.env.REACT_APP_FETCH_CHAT_ID_API;
 
     // Call the backend API to fetch the user's chat ID
-    const response = await fetch(apiUrl, { method: "GET" });
+    const response = await fetch(fetchChatIdUrl, { method: "GET" });
 
     if (!response.ok) {
       throw new Error("Failed to fetch chat ID");
@@ -42,11 +42,11 @@ async function checkReferralLink() {
     // Extract the chat ID from the link
     const chatId = referralLink.split("?start=")[1];
 
-    // URL of the backend endpoint
-    const apiUrl = "mongodb://mongo:SJxflVdZiSkkUqvRIWHtCcLUpOwXdXaE@mongodb.railway.internal:27017"; // Replace with your actual URL
+    // Replace with the actual URL of your backend API endpoint to validate referral
+    const validateReferralUrl = process.env.REACT_APP_VALIDATE_REFERRAL_API;
 
     // Call the backend API to validate the referral link
-    const response = await fetch(apiUrl, {
+    const response = await fetch(validateReferralUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chatId }),
