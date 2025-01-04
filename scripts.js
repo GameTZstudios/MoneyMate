@@ -2,7 +2,7 @@
 async function fetchChatIdAndGenerateReferral() {
   try {
     // URL of the backend endpoint
-    const apiUrl = "https://moneymatebot.onrender.com"; // Replace with your actual URL
+    const apiUrl = "mongodb://mongo:SJxflVdZiSkkUqvRIWHtCcLUpOwXdXaE@mongodb.railway.internal:27017"; // Replace with your actual URL
 
     // Call the backend API to fetch the user's chat ID
     const response = await fetch(apiUrl, { method: "GET" });
@@ -43,7 +43,7 @@ async function checkReferralLink() {
     const chatId = referralLink.split("?start=")[1];
 
     // URL of the backend endpoint
-    const apiUrl = "https://moneymatebot.onrender.com"; // Replace with your actual URL
+    const apiUrl = "mongodb://mongo:SJxflVdZiSkkUqvRIWHtCcLUpOwXdXaE@mongodb.railway.internal:27017"; // Replace with your actual URL
 
     // Call the backend API to validate the referral link
     const response = await fetch(apiUrl, {
