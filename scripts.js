@@ -1,11 +1,17 @@
 // Function to fetch chat ID from the database and generate a referral link
 async function fetchChatIdAndGenerateReferral() {
   try {
-    // Replace with the actual URL of your backend API endpoint to fetch chat ID
-    const fetchChatIdUrl = 'https://moneymatebot.onrender.com//get_chat_id';
+    // Replace with the actual URL of your deployed backend API endpoint to fetch chat ID
+    const fetchChatIdUrl = 'https://moneymatebot.onrender.com/get_chat_id'; 
 
     // Call the backend API to fetch the user's chat ID
-    const response = await fetch(fetchChatIdUrl, { method: "GET" });
+    const response = await fetch(fetchChatIdUrl, { 
+      method: "GET",
+      headers: { 
+        // Include authentication headers if required (e.g., API key)
+        // 'Authorization': `Bearer ${your_api_key}` 
+      } 
+    });
 
     if (!response.ok) {
       throw new Error("Failed to fetch chat ID");
@@ -16,13 +22,16 @@ async function fetchChatIdAndGenerateReferral() {
     const chatId = data.chatId;
 
     // Generate the referral link
-    const botURL = "https://t.me/@ProsperoAIBot"; 
+    const botURL = "https://t.me/@ProsperoAIBot";
     const referralLink = `${botURL}?start=${chatId}`;
 
     // Display the referral link
     document.getElementById("referralLinkInput").value = referralLink;
-    document.getElementById("errorMessage").textContent = ""; // Clear any previous error messages
-    alert("Referral link generated successfully!");
+    document.getElementById("errorMessage").textContent = ""; 
+
+    // Optionally, display a success message to the user
+    alert("Referral link generated successfully!"); 
+
   } catch (error) {
     console.error("Error generating referral link:", error);
     document.getElementById("errorMessage").textContent = "An error occurred while generating your referral link. Please try again.";
@@ -43,13 +52,17 @@ async function checkReferralLink() {
     // Extract the chat ID from the link
     const chatId = referralLink.split("?start=")[1];
 
-    // Replace with the actual URL of your backend API endpoint to validate referral
-    const validateReferralUrl = 'https://moneymatebot.onrender.com//validate_referral';
+    // Replace with the actual URL of your deployed backend API endpoint to validate referral
+    const validateReferralUrl = 'https://moneymatebot.onrender.com/validate_referral'; 
 
     // Call the backend API to validate the referral link
     const response = await fetch(validateReferralUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        // Include authentication headers if required (e.g., API key)
+        // 'Authorization': `Bearer ${your_api_key}` 
+      },
       body: JSON.stringify({ chatId }),
     });
 
