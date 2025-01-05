@@ -1,7 +1,7 @@
 async function fetchChatIdAndGenerateReferral() {
   try {
     // Replace with the actual URL of your deployed backend API endpoint to fetch chat ID
-    const fetchChatIdUrl = 'https://api.render.com/deploy/srv-ctt28eggph6c738fakpg?key=Jms2mFUN2zs/get_chat_id'; 
+    const fetchChatIdUrl = 'https://api.render.com/deploy/srv-ctt28eggph6c738fakpg?key=Jms2mFUN2zs'; 
 
     const response = await fetch(fetchChatIdUrl, { 
       method: "GET",
