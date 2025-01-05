@@ -1,10 +1,21 @@
 // Global coin count initialization
 let coinCount = 0;
-let taskStartTime = {}; // To track when the task was started
+
+// Function to handle X (Twitter) and Telegram tasks
+function handleSocialTask(button, url, taskId) {
+    // Redirect the user to the site
+    window.open(url, "_blank");
+
+    // Reward the user with 100 coins
+    updateCoins(100);
+
+    // Update button to show "Completed"
+    button.innerText = "Completed";
+    button.disabled = true; // Disable the button
+}
 
 // Function to handle YouTube video tasks
 function startTask(button, url, taskId) {
-    // Check if the task is a YouTube video
     if (button.classList.contains("watch-video")) {
         // Open the YouTube video in a new tab
         window.open(url, "_blank");
