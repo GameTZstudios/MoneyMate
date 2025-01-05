@@ -2,9 +2,8 @@
 async function fetchChatIdAndGenerateReferral() {
   try {
     // Replace with the actual URL of your deployed backend API endpoint to fetch chat ID
-    const fetchChatIdUrl = 'https://moneymatebot.onrender.com'; 
+    const fetchChatIdUrl = 'https://moneymatebot.onrender.com/api/get_chat_id'; 
 
-    // Call the backend API to fetch the user's chat ID
     const response = await fetch(fetchChatIdUrl, { 
       method: "GET",
       // Include any necessary authentication headers (e.g., cookies, session IDs)
@@ -14,7 +13,9 @@ async function fetchChatIdAndGenerateReferral() {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to fetch chat ID");
+      const errorData = await response.json(); 
+      document.getElementById("errorMessage").textContent = `Error: ${errorData.error || response.statusText}`; 
+      return; 
     }
 
     const data = await response.json();
@@ -49,9 +50,8 @@ async function checkReferralLink() {
     const chatId = referralLink.split("?start=")[1];
 
     // Replace with the actual URL of your deployed backend API endpoint to validate referral
-    const validateReferralUrl = 'https://moneymatebot.onrender.com'; 
+    const validateReferralUrl = 'https://moneymatebot.onrender.com/api/validate_referral'; 
 
-    // Call the backend API to validate the referral link
     const response = await fetch(validateReferralUrl, {
       method: "POST",
       headers: { 
@@ -63,7 +63,9 @@ async function checkReferralLink() {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to validate referral link");
+      const errorData = await response.json(); 
+      document.getElementById("errorMessage").textContent = `Error: ${errorData.error || response.statusText}`; 
+      return; 
     }
 
     // Parse the response
