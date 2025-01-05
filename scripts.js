@@ -2,7 +2,7 @@
 async function fetchChatIdAndGenerateReferral() {
   try {
     // Replace with the actual URL of your backend API endpoint to fetch chat ID
-    const fetchChatIdUrl = process.env.REACT_APP_FETCH_CHAT_ID_API;
+    const fetchChatIdUrl = 'https://moneymatebot.onrender.com//get_chat_id';
 
     // Call the backend API to fetch the user's chat ID
     const response = await fetch(fetchChatIdUrl, { method: "GET" });
@@ -16,15 +16,16 @@ async function fetchChatIdAndGenerateReferral() {
     const chatId = data.chatId;
 
     // Generate the referral link
-    const botURL = "https://t.me/@ProsperoAIBot";
+    const botURL = "https://t.me/@ProsperoAIBot"; 
     const referralLink = `${botURL}?start=${chatId}`;
 
     // Display the referral link
-    document.getElementById("referralLink").value = referralLink;
+    document.getElementById("referralLinkInput").value = referralLink;
+    document.getElementById("errorMessage").textContent = ""; // Clear any previous error messages
     alert("Referral link generated successfully!");
   } catch (error) {
     console.error("Error generating referral link:", error);
-    alert("An error occurred while generating your referral link. Please try again.");
+    document.getElementById("errorMessage").textContent = "An error occurred while generating your referral link. Please try again.";
   }
 }
 
@@ -35,7 +36,7 @@ async function checkReferralLink() {
     const referralLink = document.getElementById("inputReferralLink").value;
 
     if (!referralLink.includes("?start=")) {
-      alert("Invalid referral link. Please check and try again.");
+      document.getElementById("errorMessage").textContent = "Invalid referral link. Please check and try again.";
       return;
     }
 
@@ -43,7 +44,7 @@ async function checkReferralLink() {
     const chatId = referralLink.split("?start=")[1];
 
     // Replace with the actual URL of your backend API endpoint to validate referral
-    const validateReferralUrl = process.env.REACT_APP_VALIDATE_REFERRAL_API;
+    const validateReferralUrl = 'https://moneymatebot.onrender.com//validate_referral';
 
     // Call the backend API to validate the referral link
     const response = await fetch(validateReferralUrl, {
@@ -60,12 +61,31 @@ async function checkReferralLink() {
     const data = await response.json();
 
     if (data.valid) {
-      alert("Referral link is valid! Reward credited to the referrer.");
+      document.getElementById("errorMessage").textContent = "Referral link is valid! Reward credited to the referrer.";
     } else {
-      alert("Referral link is invalid or not found in the database.");
+      document.getElementById("errorMessage").textContent = "Referral link is invalid or not found in the database.";
     }
   } catch (error) {
     console.error("Error checking referral link:", error);
-    alert("An error occurred while validating the referral link. Please try again.");
+    document.getElementById("errorMessage").textContent = "An error occurred while validating the referral link. Please try again.";
   }
+}
+
+// Function to copy the referral link to the clipboard
+function copyReferralLink() {
+  const referralLinkInput = document.getElementById("referralLinkInput");
+  const referralLink = referralLinkInput.value;
+
+  if (!referralLink) {
+    return; // No link to copy
+  }
+
+  navigator.clipboard.writeText(referralLink)
+    .then(() => {
+      document.getElementById("errorMessage").textContent = "Referral link copied successfully!";
+    })
+    .catch((err) => {
+      console.error("Error copying referral link:", err);
+      document.getElementById("errorMessage").textContent = "Failed to copy referral link.";
+    });
 }
