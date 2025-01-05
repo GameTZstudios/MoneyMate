@@ -17,7 +17,7 @@
     </div>
 
     <div class="link-container">
-        <input type="text" id="referralLinkInput" value="https://t.me/MoneyMateChannel" readonly>
+        <input type="text" id="referralLinkInput" value="34456" readonly>
         <button class="copy-button" onclick="copyReferralLink()">Copy</button>
     </div>
 
@@ -60,12 +60,15 @@
     <script>
         function copyReferralLink() {
             const referralLinkInput = document.getElementById("referralLinkInput");
-            referralLinkInput.select();
+
+            // Copy the value to the clipboard
             navigator.clipboard.writeText(referralLinkInput.value)
                 .then(() => {
+                    // Show success alert
                     alert("Copied! Do more referrals to unlock the airdrop as fast as possible!");
                 })
                 .catch(() => {
+                    // Show error alert
                     alert("Failed to copy the referral link. Please try again.");
                 });
         }
