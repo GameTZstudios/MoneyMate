@@ -2,34 +2,30 @@
 async function fetchChatIdAndGenerateReferral() {
   try {
     // Replace with the actual URL of your deployed backend API endpoint to fetch chat ID
-    const fetchChatIdUrl = 'https://moneymatebot.onrender.com/get_chat_id'; 
+    const fetchChatIdUrl = 'https://reffral.onrender.com/get_chat_id'; 
 
     // Call the backend API to fetch the user's chat ID
     const response = await fetch(fetchChatIdUrl, { 
       method: "GET",
-      headers: { 
-        // Include authentication headers if required (e.g., API key)
-        // 'Authorization': `Bearer ${your_api_key}` 
-      } 
+      // Include any necessary authentication headers (e.g., cookies, session IDs)
+      // headers: { 
+      //   'Cookie': document.cookie 
+      // } 
     });
 
     if (!response.ok) {
       throw new Error("Failed to fetch chat ID");
     }
 
-    // Parse the chat ID from the response
     const data = await response.json();
     const chatId = data.chatId;
+    const referralCode = data.referralCode; 
 
-    // Generate the referral link
     const botURL = "https://t.me/@ProsperoAIBot";
     const referralLink = `${botURL}?start=${chatId}`;
 
-    // Display the referral link
     document.getElementById("referralLinkInput").value = referralLink;
     document.getElementById("errorMessage").textContent = ""; 
-
-    // Optionally, display a success message to the user
     alert("Referral link generated successfully!"); 
 
   } catch (error) {
@@ -53,15 +49,15 @@ async function checkReferralLink() {
     const chatId = referralLink.split("?start=")[1];
 
     // Replace with the actual URL of your deployed backend API endpoint to validate referral
-    const validateReferralUrl = 'https://moneymatebot.onrender.com/validate_referral'; 
+    const validateReferralUrl = 'https://reffral.onrender.com/validate_referral'; 
 
     // Call the backend API to validate the referral link
     const response = await fetch(validateReferralUrl, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
-        // Include authentication headers if required (e.g., API key)
-        // 'Authorization': `Bearer ${your_api_key}` 
+        // Include any necessary authentication headers (e.g., cookies, session IDs)
+        // 'Cookie': 'your_session_cookie' 
       },
       body: JSON.stringify({ chatId }),
     });
@@ -90,7 +86,8 @@ function copyReferralLink() {
   const referralLink = referralLinkInput.value;
 
   if (!referralLink) {
-    return; // No link to copy
+    document.getElementById("errorMessage").textContent = "No referral link to copy.";
+    return; 
   }
 
   navigator.clipboard.writeText(referralLink)
@@ -102,3 +99,7 @@ function copyReferralLink() {
       document.getElementById("errorMessage").textContent = "Failed to copy referral link.";
     });
 }
+
+// Add event listener to the "Generate Referral Link" button
+const generateButton = document.querySelector('.generate-button');
+generateButton.addEventListener('click', fetchChatIdAndGenerateReferral);
