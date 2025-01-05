@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Friends Page</title>
-  <link rel="stylesheet" href="friends.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends Page</title>
+    <link rel="stylesheet" href="friends.css">
 </head>
 <body>
-  <div class="gift-section">
-    <img src="gift.png" alt="Gift" class="gift-image">
-  </div>
+    <div class="gift-section">
+        <img src="gift.png" alt="Gift" class="gift-image">
+    </div>
 
-  <div class="details-container">
-    <h2>Invite Your Friends!</h2>
-    <p>Earn rewards by referring your friends to join us. For every successful referral, you'll be rewarded with exclusive bonuses!</p>
-  </div>
+    <div class="details-container">
+        <h2>Invite Your Friends!</h2>
+        <p>Earn rewards by referring your friends to join us. For every successful referral, you'll be rewarded with exclusive bonuses!</p>
+    </div>
 
-  <div class="button-container">
-    <button class="generate-button" onclick="generateReferralLink()">Generate Referral Link</button>
-  </div>
+    <div class="button-container">
+        <button class="generate-button" onclick="fetchChatIdAndGenerateReferral()">Generate Referral Link</button>
+    </div>
 
-  <div class="link-container">
-    <input type="text" id="referralLinkInput" readonly placeholder="Your referral link will appear here">
-    <button class="copy-button" onclick="copyReferralLink()">Copy</button>
-  </div>
+    <div class="link-container">
+        <input type="text" id="referralLinkInput" readonly placeholder="Your referral link will appear here">
+        <button class="copy-button" onclick="copyReferralLink()">Copy</button>
+    </div>
 
-  <nav class="navbar">
-    <ul>
-      <li>
-        <a href="index.html">
-          <img src="pickaxe.png" alt="" />
-          <span>Mine</span>
-        </a>
-      </li>
-      <li>
-        <a href="Tasks.html">
-          <img src="tasks.jpg" alt="" />
-          <span>Tasks</span>
-        </a>
-      </li>
-      <li>
-        <a href="friends.html">
-          <img src="friends.png" alt="" />
-        
-            <span>Friends</span>
-          </a>
-        </a>
-      </li>
-      <li>
-        <a href="Airdrops.html">
-          <img src="coin.png" alt="" />
-          <span>Airdrop</span>
-        </a>
-      </li>
-      <li>
-        <a href="Tournaments.html">
-          <img src="console.png" alt="" />
-          <span>Tournaments</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+    <nav class="navbar">
+        <ul>
+            <li>
+                <a href="index.html">
+                    <img src="pickaxe.png" alt="" />
+                    <span>Mine</span>
+                </a>
+            </li>
+            <li>
+                <a href="Tasks.html">
+                    <img src="tasks.jpg" alt="" />
+                    <span>Tasks</span>
+                </a>
+            </li>
+            <li>
+                <a href="friends.html">
+                    <img src="friends.png" alt="" />
+                    <span>Friends</span>
+                </a>
+            </li>
+            <li>
+                <a href="Airdrops.html">
+                    <img src="coin.png" alt="" />
+                    <span>Airdrop</span>
+                </a>
+            </li>
+            <li>
+                <a href="Tournaments.html">
+                    <img src="console.png" alt="" />
+                    <span>Tournaments</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-  <p id="errorMessage"></p>
-  <script src="scripts.js"></script>
+    <p id="errorMessage"></p>
+    <script src="scripts.js"></script>
 </body>
 </html>
