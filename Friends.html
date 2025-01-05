@@ -13,13 +13,11 @@
 
     <div class="details-container">
         <h2>Invite Your Friends!</h2>
-        <p>Make More Referrals To Unload the airdrop as fast as possible!</p>
+        <p>Make More Referrals To Unlock the Airdrop as Fast as Possible!</p>
     </div>
 
-    
-
     <div class="link-container">
-        <input type="text" id="referralLinkInput" readonly placeholder="Your referral link will appear here">
+        <input type="text" id="referralLinkInput" value="https://t.me/MoneyMateChannel" readonly>
         <button class="copy-button" onclick="copyReferralLink()">Copy</button>
     </div>
 
@@ -27,31 +25,31 @@
         <ul>
             <li>
                 <a href="index.html">
-                    <img src="pickaxe.png" alt="" />
+                    <img src="pickaxe.png" alt="Mine Icon">
                     <span>Mine</span>
                 </a>
             </li>
             <li>
                 <a href="Tasks.html">
-                    <img src="tasks.jpg" alt="" />
+                    <img src="tasks.jpg" alt="Tasks Icon">
                     <span>Tasks</span>
                 </a>
             </li>
             <li>
                 <a href="friends.html">
-                    <img src="friends.png" alt="" />
+                    <img src="friends.png" alt="Friends Icon">
                     <span>Friends</span>
                 </a>
             </li>
             <li>
                 <a href="Airdrops.html">
-                    <img src="coin.png" alt="" />
+                    <img src="coin.png" alt="Airdrop Icon">
                     <span>Airdrop</span>
                 </a>
             </li>
             <li>
                 <a href="Tournaments.html">
-                    <img src="console.png" alt="" />
+                    <img src="console.png" alt="Tournaments Icon">
                     <span>Tournaments</span>
                 </a>
             </li>
@@ -59,6 +57,18 @@
     </nav>
 
     <p id="errorMessage"></p>
-    <script src="scripts.js"></script>
+    <script>
+        function copyReferralLink() {
+            const referralLinkInput = document.getElementById("referralLinkInput");
+            referralLinkInput.select();
+            navigator.clipboard.writeText(referralLinkInput.value)
+                .then(() => {
+                    alert("Copied! Do more referrals to unlock the airdrop as fast as possible!");
+                })
+                .catch(() => {
+                    alert("Failed to copy the referral link. Please try again.");
+                });
+        }
+    </script>
 </body>
 </html>
