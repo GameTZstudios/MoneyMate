@@ -69,54 +69,28 @@
     
     <!-- JavaScript -->
     <script>
-        // TON Wallet Connection
-        const tonConnect = new TonConnect();
+      import TonConnect from '@tonconnect/sdk';
 
-        // Handle Connect Wallet Button Click
-        document.getElementById("connect-ton-wallet").addEventListener("click", async () => {
-            try {
-                // Initialize connection
-                await tonConnect.connect();
+// Initialize TON Connect SDK
+const tonConnect = new TonConnect();
 
-                // Retrieve wallet address
-                const userWallet = tonConnect.account;
+// DOM Elements
+const connectButton = document.getElementById('connect-wallet');
+const walletAddressElement = document.getElementById('wallet-address');
 
-                if (userWallet) {
-                    // Display connected wallet status
-                    document.getElementById("ton-wallet-status").innerText = `Connected: ${userWallet}`;
-
-                    // Save wallet address to the backend
-                    await saveTonAddressToDatabase(userWallet);
-                } else {
-                    alert("Failed to connect wallet.");
-                }
-            } catch (error) {
-                console.error("Error connecting TON wallet:", error);
-                alert("Connection failed. Please try again.");
-            }
-        });
-
-        // Save Wallet Address to Backend
-        async function saveTonAddressToDatabase(tonAddress) {
-            const userId = "example-user-id"; // Replace with actual user ID logic
-
-            try {
-                const response = await fetch("/save-ton-address", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ userId, tonAddress }),
-                });
-
-                const data = await response.json();
-                if (response.ok) {
-                    alert(data.message);
-                } else {
-                    alert("Failed to save TON address: " + data.message);
-                }
-            } catch (error) {
-                console.error("Error saving TON address:", error);
-            }
+// Connect Wallet Handler
+connectButton.addEventListener('click', async () => {
+    try {
+        await tonConnect.connect();
+        const wallet = tonConnect.wallet;
+        if (wallet) {
+            walletAddressElement.textContent = `Wallet Address: ${wallet.account.address}`;
         }
+    } catch (error) {
+        console.error('Failed to connect wallet:', error);
+    }
+});
+
     </script>
 
     <!-- Styles -->
